@@ -27,38 +27,38 @@ export default function App() {
   // line 2
   //  line 3
 
-  async function onSearchSubmit() {
-    //  line one : geting data from api 
-    //  rsetting the response data
+  // async function onSearchSubmit() {
+  //   //  line one : geting data from api 
+  //   //  rsetting the response data
 
-    const results =  await findGithubAccounts(inputValue);
+  //   const results =  await findGithubAccounts(inputValue);
 
-    // console.log(results[0])
-    setResults(results);
+  //   // console.log(results[0])
+  //   setResults(results);
 
-  }
+  // }
 
   const API_URL = "https://api.github.com";
 
-  async function findGithubAccounts(query) {
-    try {
-      const response = await fetch(`${API_URL}/search/users?q=${query}`);
-      const json = await response.json();
-      return json.items || [];
-    } catch (e) {
-      throw new Error(e);
-    }
-  }
-
-  // function foo (query) {
-  //   const result = []
-  //   fetch(`${API_URL}/search/users?q=${query}`)
-  //   .then((response) => response.json())
-  //   .then(data => {
-  //     setResults(data?.items)
-  //   })
-  //   .catch(error => console.log(error))
+  // async function findGithubAccounts(query) {
+  //   try {
+  //     const response = await fetch(`${API_URL}/search/users?q=${query}`);
+  //     const json = await response.json();
+  //     return json.items || [];
+  //   } catch (e) {
+  //     throw new Error(e);
+  //   }
   // }
+
+  function foo (query) {
+    const result = []
+    fetch(`${API_URL}/search/users?q=${query}`)
+    .then((response) => response.json())
+    .then(data => {
+      setResults(data?.items)
+    })
+    .catch(error => console.log(error))
+  }
 
   return (
       <main className="main">
@@ -73,7 +73,7 @@ export default function App() {
               onChange={handleOnChange}
             />
             <button 
-              onClick={onSearchSubmit}
+              onClick={foo}
               >Search</button>
 
         </div>
